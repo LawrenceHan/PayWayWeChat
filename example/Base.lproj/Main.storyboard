@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ha9-2g-cwF">
+                                <rect key="frame" x="125.5" y="427.5" width="163" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="PrePay Request"/>
+                                <connections>
+                                    <action selector="payClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eOM-eu-Bdk"/>
+                                </connections>
+                            </button>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uz0-Rr-WCM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WKh-d3-zCu">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zDu-nL-qaV">
+                                            <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zDu-nL-qaV" firstAttribute="centerY" secondItem="WKh-d3-zCu" secondAttribute="centerY" id="7aU-ku-XVl"/>
+                                        <constraint firstItem="zDu-nL-qaV" firstAttribute="centerX" secondItem="WKh-d3-zCu" secondAttribute="centerX" id="gpe-a8-R9y"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Uz0-Rr-WCM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="10p-Uk-uAl"/>
+                            <constraint firstItem="Uz0-Rr-WCM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VED-Pg-0A9"/>
+                            <constraint firstItem="ha9-2g-cwF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YMn-KA-7J0"/>
+                            <constraint firstAttribute="bottom" secondItem="Uz0-Rr-WCM" secondAttribute="bottom" id="aQx-Pl-eOq"/>
+                            <constraint firstItem="ha9-2g-cwF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="irv-fT-vUH"/>
+                            <constraint firstAttribute="trailing" secondItem="Uz0-Rr-WCM" secondAttribute="trailing" id="oiX-rC-htE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="zDu-nL-qaV" id="Myl-3q-dQk"/>
+                        <outlet property="blurView" destination="Uz0-Rr-WCM" id="1ft-kZ-X2Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
