@@ -8,7 +8,7 @@
 
 
 import Foundation
-import PayWayWeChatPrivate
+import WeChatSDK
 
 let _appId = "wxb4ba3c02aa476ea1"
 let _universalLink = "https://help.wechat.com/sdksample/"

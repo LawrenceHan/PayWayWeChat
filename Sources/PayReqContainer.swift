@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import PayWayWeChatPrivate
+import WeChatSDK
 
 final class PayReqContainer: Decodable {
     let payRequest: PayReq
