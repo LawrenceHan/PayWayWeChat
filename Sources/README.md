@@ -6,6 +6,8 @@
 2. URL Types
 3. WXPay.default.registerApp
 4. WXPay.default.open(url: url, options: options)
+5. WXPay.default.isDebug
+6. WXPay.default.timeoutInterval
 
 ### References:
 

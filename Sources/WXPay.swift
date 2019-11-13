@@ -12,34 +12,39 @@ import WeChatSDK
 
 let _appId = "wxb4ba3c02aa476ea1"
 let _universalLink = "https://help.wechat.com/sdksample/"
-let url = "https://wxpay.wxutil.com/pub_v2/app/app_pay.php?plat=ios"
+let _url = "https://wxpay.wxutil.com/pub_v2/app/app_pay.php?plat=ios"
 
 public final class WXPay: NSObject {
     
+    // MARK: - Public
+    
     public static let `default` = WXPay()
+    public var isDebug = false
+    public var callbackTimeout = 30.0
     
     public func registerApp(appId: String, universalLink: String) {
-        WXApi.registerApp(_appId, universalLink: _universalLink)
+        if isDebug {
+            WXApi.registerApp(_appId, universalLink: _universalLink)
+        } else {
+            WXApi.registerApp(appId, universalLink: universalLink)
+        }
     }
     
     public func open(url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         return WXApi.handleOpen(url, delegate: self)
     }
     
-    public func prePayRequest(with productId: Int, completion: @escaping (Result<WXPayResponse, WXPayError>) -> Void) -> URLSessionTask? {
+    public func prePayRequest(with request: URLRequest, completion: @escaping (Result<WXPayResponse, WXPayError>) -> Void) -> URLSessionTask? {
         if _completion != nil {
-            _completion?(.failure(.wxPayError(code: 99, message: "only support one wxpay request at a time, cancelled last one.")))
             _completion = nil
+            print("[PayWayWeChat] only support one wxpay request at a time, cancelled last one.")
         }
         
-        let error = RequestError.invalidURL(url)
-        guard let url = URL(string: url) else {
-            completion(.failure(.requestError(error)))
-            return nil
+        var request = request
+        if isDebug {
+            request = URLRequest(url: URL(string: _url)!)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
-        
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
             let result: Result<PayReqContainer, WXPayError>
@@ -66,10 +71,17 @@ public final class WXPay: NSObject {
             
             switch result {
             case .success(let payReq):
-                DispatchQueue.main.async { [weak self] in
+                DispatchQueue.main.async { [unowned self] in
                     WXApi.send(payReq.payRequest) { result in
                         if result {
-                            self?._completion = completion
+                            self._completion = completion
+                            DispatchQueue.main.asyncAfter(deadline: .now() + self.callbackTimeout) {
+                                #if DEBUG
+                                print("[PayWayWeChat] timeout callback")
+                                #endif
+                                self._completion?(.failure(.wxPayError(code: 100, message: "timeout (\(self.callbackTimeout)) for wx prepay request")))
+                                self._completion = nil
+                            }
                         } else {
                             completion(.failure(.wxPayError(code: 99, message: "WXApi.send(payReq.payRequest) failed")))
                         }
@@ -88,9 +100,12 @@ public final class WXPay: NSObject {
         return task
     }
     
+    // MARK: - Private
+    
     private var _completion: ((Result<WXPayResponse, WXPayError>) -> Void)?
 }
 
+// MARK: - WXApi delegate
 extension WXPay: WXApiDelegate {
     
     public func onReq(_ req: BaseReq) {
@@ -114,54 +129,7 @@ extension WXPay: WXApiDelegate {
     }
 }
 
-public struct WXPayResponse {
-    public var id: String {
-        return "WXPayResponse-\(code)" + message + "\(type)"
-    }
-    
-    public let code: Int
-    public let message: String
-    public let type: Int
-}
-
+// MARK: - Notification extension
 public extension NSNotification.Name {
     static let newWXPayResp = NSNotification.Name("com.hanguang.paywaywechat.newWXPayResp")
-}
-
-/// `WXPayError` represents an error that occurs while task for a wxpay request.
-public enum WXPayError: Error {
-    /// Error of `WXPay callback`
-    case wxPayError(code: Int, message: String)
-    
-    /// Error of `URLSession`.
-    case connectionError(Error)
-    
-    /// Error while creating `URLRequest` from `Request`.
-    case requestError(Error)
-    
-    /// Error while creating `Request.Response` from `(Data, URLResponse)`.
-    case responseError(Error)
-}
-
-/// `RequestError` represents a common error that occurs while building `URLRequest` from `Request`.
-public enum RequestError: Error {
-    /// Indicates `url` string is invalid.
-    case invalidURL(String)
-    
-    /// Indicates `URLRequest` is invalid.
-    case invalidURLRequest(URLRequest)
-}
-
-/// `ResponseError` represents a common error that occurs while getting `Request.Response`
-/// from raw result tuple `(Data?, URLResponse?, Error?)`.
-public enum ResponseError: Error {
-    /// Indicates the session adapter returned `URLResponse` that fails to down-cast to `HTTPURLResponse`.
-    case nonHTTPURLResponse(URLResponse?)
-    
-    /// Indicates `HTTPURLResponse.statusCode` is not acceptable.
-    /// In most cases, *acceptable* means the value is in `200..<300`.
-    case unacceptableStatusCode(Int)
-    
-    /// Indicates `Any` that represents the response is unexpected.
-    case unexpectedObject(Any)
 }

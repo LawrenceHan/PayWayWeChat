@@ -25,7 +25,8 @@ class ViewController: UIViewController {
         }
         activityIndicator.startAnimating()
         
-        _ = WXPay.default.prePayRequest(with: 0) { result in
+        _ = WXPay.default.prePayRequest(with: URLRequest(url: URL(string: "https://www.baidu.com")!)) { result in
+            print("received result: \(result)")
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
             switch result {
             case .success(let response):

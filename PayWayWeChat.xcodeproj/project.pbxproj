@@ -33,6 +33,10 @@
 		97035A44237AAC41004D9365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97035A42237AAC41004D9365 /* Main.storyboard */; };
 		97035A46237AAC42004D9365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97035A45237AAC42004D9365 /* Assets.xcassets */; };
 		97035A49237AAC42004D9365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97035A47237AAC42004D9365 /* LaunchScreen.storyboard */; };
+		9735212D237BF4F6005BB7A6 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735212C237BF4F6005BB7A6 /* Error.swift */; };
+		9735212F237BF543005BB7A6 /* WXPayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735212E237BF543005BB7A6 /* WXPayResponse.swift */; };
+		97352130237BF5B2005BB7A6 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735212C237BF4F6005BB7A6 /* Error.swift */; };
+		97352131237BF5B2005BB7A6 /* WXPayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735212E237BF543005BB7A6 /* WXPayResponse.swift */; };
 		97E74DBA237AF41500D986B3 /* PayWayWeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9703597C237A5D77004D9365 /* PayWayWeChat.framework */; };
 		97E74DBB237AF41500D986B3 /* PayWayWeChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9703597C237A5D77004D9365 /* PayWayWeChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -95,6 +99,8 @@
 		97035A48237AAC42004D9365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97035A4A237AAC42004D9365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97035A51237ABD93004D9365 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		9735212C237BF4F6005BB7A6 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		9735212E237BF543005BB7A6 /* WXPayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPayResponse.swift; sourceTree = "<group>"; };
 		977AF99E237AF38000343BA1 /* example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = example.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +189,8 @@
 				9703599C237A61C8004D9365 /* WeChatSDK */,
 				97035999237A5FCF004D9365 /* PayReqContainer.swift */,
 				970359A8237A6569004D9365 /* WXPay.swift */,
+				9735212C237BF4F6005BB7A6 /* Error.swift */,
+				9735212E237BF543005BB7A6 /* WXPayResponse.swift */,
 				970359A7237A6321004D9365 /* README.md */,
 			);
 			path = Sources;
@@ -384,6 +392,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97352130237BF5B2005BB7A6 /* Error.swift in Sources */,
+				97352131237BF5B2005BB7A6 /* WXPayResponse.swift in Sources */,
 				9703599A237A5FCF004D9365 /* PayReqContainer.swift in Sources */,
 				970359A9237A6569004D9365 /* WXPay.swift in Sources */,
 			);
@@ -402,6 +412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				97035A41237AAC41004D9365 /* ViewController.swift in Sources */,
+				9735212D237BF4F6005BB7A6 /* Error.swift in Sources */,
+				9735212F237BF543005BB7A6 /* WXPayResponse.swift in Sources */,
 				97035A3F237AAC41004D9365 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
