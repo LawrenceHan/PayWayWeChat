@@ -15,9 +15,14 @@ public final class WXPay: NSObject {
     // MARK: - Public
     
     public static let `default` = WXPay()
-    public var isDebug = false
-    public var callbackTimeout = 30.0
     
+    /// Set to true to use WeChat official testing env
+    public var isDebug = false
+    
+    /// The WeChat app callback timeout, default is 0 means wait forever
+    public var callbackTimeout: TimeInterval = 0.0
+    
+    /// Must call this func before any request
     public func registerApp(appId: String, universalLink: String) {
         if isDebug {
             WXApi.registerApp(debug_appId, universalLink: debug_universalLink)
@@ -26,11 +31,20 @@ public final class WXPay: NSObject {
         }
     }
     
+    /// WeChat app callback delegate
     public func open(url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         return WXApi.handleOpen(url, delegate: self)
     }
     
-    public func prePayRequest(with request: URLRequest, completion: @escaping (Result<WXPayResponse, WXPayError>) -> Void) -> URLSessionTask? {
+    /// Send a `URLRequest` to your backend, then use the `prepay_id` from backend
+    /// to launch WeChat app
+    /// - Parameter request: A `URLRequest` instance, normally you can create a request with your
+    /// current network framework, put related content and body into that request
+    /// - Parameter completion: A closure that contains a result either be `success(WXPayResponse)` or `failure(WXPayError)`.
+    /// The closure is guaranteed to be called, unless `WeChat` app doesn't run callback.
+    /// In that case, you can give callbackTimeout a greater than 0 value, then the closure will be called when reaches timeout.
+    /// - Returns: A `URLSessionTask` instance you can use later on
+    public func prePayRequest(with request: URLRequest, completion: @escaping (Result<WXPayResponse, WXPayError>) -> Void) -> URLSessionTask {
         
         // clean _completion
         if _completion != nil {
@@ -45,7 +59,7 @@ public final class WXPay: NSObject {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         
-        // create data task
+        // create a data task
         let task = URLSession.shared.dataTask(with: request) { data, urlResponse, error in
             let result: Result<PayReqContainer, WXPayError>
             
@@ -79,12 +93,14 @@ public final class WXPay: NSObject {
                             self._completion = completion
                             
                             // Setup WeChat callback timeout function
-                            DispatchQueue.main.asyncAfter(deadline: .now() + self.callbackTimeout) {
-                                #if DEBUG
-                                print("[PayWayWeChat] timeout callback")
-                                #endif
-                                self._completion?(.failure(.wxPayError(code: 100, message: "timeout (\(self.callbackTimeout)) for wx prepay request")))
-                                self._completion = nil
+                            if self.callbackTimeout > 0 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + self.callbackTimeout) {
+                                    #if DEBUG
+                                    print("[PayWayWeChat] timeout callback")
+                                    #endif
+                                    self._completion?(.failure(.wxPayError(code: 100, message: "timeout (\(self.callbackTimeout)) for wx prepay request")))
+                                    self._completion = nil
+                                }
                             }
                         } else {
                             completion(.failure(.wxPayError(code: 99, message: "WXApi.send(payReq.payRequest) failed")))
@@ -118,7 +134,8 @@ extension WXPay: WXApiDelegate {
     public func onReq(_ req: BaseReq) {
     }
     
-    // received callback from WeChat app
+    /// Whenever received callback from WeChat app, a notification newWXPayResp will be sent,
+    /// if there's an ongoing pay request, then its completion closure will be called if it is non nil.
     public func onResp(_ resp: BaseResp) {
         let payload = WXPayResponse(code: Int(resp.errCode), message: resp.errStr, type: Int(resp.type))
         

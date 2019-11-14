@@ -11,5 +11,6 @@
 
 ### References:
 
+[Network Link Conditioner](https://nshipster.com/network-link-conditioner/)
 [Bridging header for framework](https://stackoverflow.com/questions/24875745/xcode-6-beta-4-using-bridging-headers-with-framework-targets-is-unsupported)
 [Mixed Modules](https://medium.com/allatoneplace/challenges-building-a-swift-framework-d882867c97f9)

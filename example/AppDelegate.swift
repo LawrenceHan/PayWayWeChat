@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         WXPay.default.isDebug = true
-        WXPay.default.callbackTimeout = 10
+        WXPay.default.callbackTimeout = 300
         WXPay.default.registerApp(appId: "", universalLink: "")
         return true
     }

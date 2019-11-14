@@ -17,10 +17,7 @@ public enum WXPayError: Error {
     
     /// Error of `URLSession`.
     case connectionError(Error)
-    
-    /// Error while creating `URLRequest` from `Request`.
-    case requestError(Error)
-    
+
     /// Error while creating `Request.Response` from `(Data, URLResponse)`.
     case responseError(Error)
 }
