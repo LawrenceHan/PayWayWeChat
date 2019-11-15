@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WXPay Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/WXPay" class="dashAnchor"></a>
+    <a title="WXPay Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        WXPay Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/WXPay.html">WXPay</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ResponseError.html">ResponseError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/WXPayError.html">WXPayError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotification.html">NSNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotification/Name.html">– Name</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/WXPayResponse.html">WXPayResponse</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>WXPay</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">WXPay</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>A single class that handles <code>WeChatPay</code> operations.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public"></a>
+                <a name="//apple_ref/swift/Section/Public" class="dashAnchor"></a>
+                <a href="#/Public">
+                  <h3 class="section-name">Public</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12PayWayWeChat5WXPayC0E6Resulta"></a>
+                    <a name="//apple_ref/swift/Alias/WXPayResult" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12PayWayWeChat5WXPayC0E6Resulta">WXPayResult</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The unique result for <code>WeChatPay</code> request</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">WXPayResult</span> <span class="o">=</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/WXPayResponse.html">WXPayResponse</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/WXPayError.html">WXPayError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12PayWayWeChat5WXPayC7defaultACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12PayWayWeChat5WXPayC7defaultACvpZ">default</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default static instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">let</span> <span class="err">`</span><span class="k">default</span><span class="err">`</span><span class="p">:</span> <span class="kt">WXPay</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12PayWayWeChat5WXPayC7isDebugSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isDebug" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12PayWayWeChat5WXPayC7isDebugSbvp">isDebug</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set to true to use WeChat official testing env, default is false.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isDebug</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12PayWayWeChat5WXPayC15callbackTimeoutSdvp"></a>
+                    <a name="//apple_ref/swift/Property/callbackTimeout" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12PayWayWeChat5WXPayC15callbackTimeoutSdvp">callbackTimeout</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The WeChat app callback timeout, default is 0 means wait forever, any value that less than 0 will be ignored.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">callbackTimeout</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12PayWayWeChat5WXPayC11registerApp5appId13universalLinkySS_SStF"></a>
+                    <a name="//apple_ref/swift/Method/registerApp(appId:universalLink:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12PayWayWeChat5WXPayC11registerApp5appId13universalLinkySS_SStF">registerApp(appId:universalLink:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register your app in <code>application:didFinishLaunchingWithOptions</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerApp</span><span class="p">(</span><span class="nv">appId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">universalLink</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12PayWayWeChat5WXPayC4open3url7optionsSb10Foundation3URLV_SDySo30UIApplicationOpenURLOptionsKeyaypGtF"></a>
+                    <a name="//apple_ref/swift/Method/open(url:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12PayWayWeChat5WXPayC4open3url7optionsSb10Foundation3URLV_SDySo30UIApplicationOpenURLOptionsKeyaypGtF">open(url:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>WeChat</code> app callback delegate.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">open</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12PayWayWeChat5WXPayC03preA7Request4with10completionSo16NSURLSessionTaskC10Foundation10URLRequestV_ys6ResultOyAA0E8ResponseVAA0E5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/prePayRequest(with:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12PayWayWeChat5WXPayC03preA7Request4with10completionSo16NSURLSessionTaskC10Foundation10URLRequestV_ys6ResultOyAA0E8ResponseVAA0E5ErrorOGctF">prePayRequest(with:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this function to handle a <code>WeChat Pay</code> request,
+request backend to generate a payment, then use the <code>prepay_id</code> from backend
+to launch WeChat app.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">prePayRequest</span><span class="p">(</span><span class="n">with</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/WXPay.html#/s:12PayWayWeChat5WXPayC0E6Resulta">WXPayResult</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">URLSessionTask</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A <code>URLRequest</code> instance, ideally you should create the request with your custom configurations,
+or using any networking framework to generate a formatted request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that contains a <code><a href="../Classes/WXPay.html#/s:12PayWayWeChat5WXPayC0E6Resulta">WXPayResult</a></code> either be success:  <code><a href="../Structs/WXPayResponse.html">WXPayResponse</a></code> or failure: <code><a href="../Enums/WXPayError.html">WXPayError</a></code>.
+The closure is guaranteed to be called, unless <code>WeChat</code> app doesn&rsquo;t run callback.
+In that case, you can given callbackTimeout a greater than 0 value, then the closure will be called when it reaches timeout.
+If there&rsquo;re 2 request is running, then only the last one&rsquo;s completion closure will be called.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>URLSessionTask</code> instance you can use later on.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/WXApi%20delegate"></a>
+                <a name="//apple_ref/swift/Section/WXApi delegate" class="dashAnchor"></a>
+                <a href="#/WXApi%20delegate">
+                  <h3 class="section-name">WXApi delegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@PayWayWeChat@objc(cs)WXPay(im)onReq:"></a>
+                    <a name="//apple_ref/swift/Method/onReq(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PayWayWeChat@objc(cs)WXPay(im)onReq:">onReq(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Handles <code>WeChat</code> initialed request.
+Not suport currently.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onReq</span><span class="p">(</span><span class="n">_</span> <span class="nv">req</span><span class="p">:</span> <span class="kt">BaseReq</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@PayWayWeChat@objc(cs)WXPay(im)onResp:"></a>
+                    <a name="//apple_ref/swift/Method/onResp(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@PayWayWeChat@objc(cs)WXPay(im)onResp:">onResp(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Handles <code>WeChat</code> callbacks.
+Whenever received callback from WeChat app, a notification named <code>newWXPayResp</code> will be sent,
+if there&rsquo;s an ongoing pay request, then its completion closure will be called if it is non nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onResp</span><span class="p">(</span><span class="n">_</span> <span class="nv">resp</span><span class="p">:</span> <span class="kt">BaseResp</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-11-15)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.12.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

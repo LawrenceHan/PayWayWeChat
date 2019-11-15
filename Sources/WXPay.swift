@@ -10,19 +10,24 @@
 import Foundation
 import WeChatSDK
 
+/// A single class that handles `WeChatPay` operations.
 public final class WXPay: NSObject {
     
     // MARK: - Public
     
+    /// The unique result for `WeChatPay` request
+    public typealias WXPayResult = Result<WXPayResponse, WXPayError>
+    
+    /// The default static instance.
     public static let `default` = WXPay()
     
-    /// Set to true to use WeChat official testing env
+    /// Set to true to use WeChat official testing env, default is false.
     public var isDebug = false
     
-    /// The WeChat app callback timeout, default is 0 means wait forever
+    /// The WeChat app callback timeout, default is 0 means wait forever, any value that less than 0 will be ignored.
     public var callbackTimeout: TimeInterval = 0.0
     
-    /// Must call this func before any request
+    /// Register your app in `application:didFinishLaunchingWithOptions`.
     public func registerApp(appId: String, universalLink: String) {
         if isDebug {
             WXApi.registerApp(debug_appId, universalLink: debug_universalLink)
@@ -31,20 +36,22 @@ public final class WXPay: NSObject {
         }
     }
     
-    /// WeChat app callback delegate
+    /// `WeChat` app callback delegate.
     public func open(url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         return WXApi.handleOpen(url, delegate: self)
     }
     
-    /// Send a `URLRequest` to your backend, then use the `prepay_id` from backend
-    /// to launch WeChat app
-    /// - Parameter request: A `URLRequest` instance, normally you can create a request with your
-    /// current network framework, put related content and body into that request
-    /// - Parameter completion: A closure that contains a result either be `success(WXPayResponse)` or `failure(WXPayError)`.
+    /// Use this function to handle a `WeChat Pay` request,
+    /// request backend to generate a payment, then use the `prepay_id` from backend
+    /// to launch WeChat app.
+    /// - Parameter request: A `URLRequest` instance, ideally you should create the request with your custom configurations,
+    /// or using any networking framework to generate a formatted request.
+    /// - Parameter completion: A closure that contains a `WXPayResult` either be success:  `WXPayResponse` or failure: `WXPayError`.
     /// The closure is guaranteed to be called, unless `WeChat` app doesn't run callback.
-    /// In that case, you can give callbackTimeout a greater than 0 value, then the closure will be called when reaches timeout.
-    /// - Returns: A `URLSessionTask` instance you can use later on
-    public func prePayRequest(with request: URLRequest, completion: @escaping (Result<WXPayResponse, WXPayError>) -> Void) -> URLSessionTask {
+    /// In that case, you can given callbackTimeout a greater than 0 value, then the closure will be called when it reaches timeout.
+    /// If there're 2 request is running, then only the last one's completion closure will be called.
+    /// - Returns: A `URLSessionTask` instance you can use later on.
+    public func prePayRequest(with request: URLRequest, completion: @escaping (WXPayResult) -> Void) -> URLSessionTask {
         
         // clean _completion
         if _completion != nil {
@@ -120,21 +127,28 @@ public final class WXPay: NSObject {
         return task
     }
     
+    // MARK: - Internal
+    
+    let debug_appId = "wxb4ba3c02aa476ea1"
+    let debug_universalLink = "https://help.wechat.com/sdksample/"
+    let debug_url = "https://wxpay.wxutil.com/pub_v2/app/app_pay.php?plat=ios"
+    
     // MARK: - Private
     
-    private var _completion: ((Result<WXPayResponse, WXPayError>) -> Void)?
-    private let debug_appId = "wxb4ba3c02aa476ea1"
-    private let debug_universalLink = "https://help.wechat.com/sdksample/"
-    private let debug_url = "https://wxpay.wxutil.com/pub_v2/app/app_pay.php?plat=ios"
+    private var _completion: ((WXPayResult) -> Void)?
 }
 
 // MARK: - WXApi delegate
+
 extension WXPay: WXApiDelegate {
     
+    /// Handles `WeChat` initialed request.
+    /// Not suport currently.
     public func onReq(_ req: BaseReq) {
     }
     
-    /// Whenever received callback from WeChat app, a notification newWXPayResp will be sent,
+    /// Handles `WeChat` callbacks.
+    /// Whenever received callback from WeChat app, a notification named `newWXPayResp` will be sent,
     /// if there's an ongoing pay request, then its completion closure will be called if it is non nil.
     public func onResp(_ resp: BaseResp) {
         let payload = WXPayResponse(code: Int(resp.errCode), message: resp.errStr, type: Int(resp.type))
@@ -158,5 +172,6 @@ extension WXPay: WXApiDelegate {
 
 // MARK: - Notification extension
 public extension NSNotification.Name {
+    /// Notification for received `WeChat` callback, the object is `WXPayResponse`.
     static let newWXPayResp = NSNotification.Name("com.hanguang.paywaywechat.newWXPayResp")
 }

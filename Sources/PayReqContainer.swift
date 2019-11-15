@@ -9,6 +9,7 @@
 import Foundation
 import WeChatSDK
 
+/// Objective-c class doesn't support `Decodable`, so we create a container class for it.
 final class PayReqContainer: Decodable {
     let payRequest: PayReq
     

@@ -12,7 +12,7 @@ import XCTest
 class PayWayWeChatTests: XCTestCase {
 
     override func setUp() {
-        WXPay.default.registerApp(appId: debug_appId, universalLink: debug_universalLink)
+        WXPay.default.registerApp(appId: WXPay.default.debug_appId, universalLink: WXPay.default.debug_universalLink)
         WXPay.default.callbackTimeout = callbackTimeout
     }
 
@@ -42,7 +42,7 @@ class PayWayWeChatTests: XCTestCase {
     
     /// when `URLRequest` is timeout, it should returns a failure result that contains a `connectionError`
     func testRequestTimeout() {
-        var request = URLRequest(url: URL(string: debug_url)!)
+        var request = URLRequest(url: URL(string: WXPay.default.debug_url)!)
         request.timeoutInterval = 0.05
         let expectation = self.expectation(description: "testRequestTimeout")
         
@@ -63,7 +63,7 @@ class PayWayWeChatTests: XCTestCase {
     
     /// when `task` is cancelled, it should returns a failure result that contains a `connectionError`
     func testTaskCancelled() {
-        let request = URLRequest(url: URL(string: debug_url)!)
+        let request = URLRequest(url: URL(string: WXPay.default.debug_url)!)
         let expectation = self.expectation(description: "testTaskCancelled")
         
         let task = WXPay.default.prePayRequest(with: request) { result in
@@ -84,7 +84,7 @@ class PayWayWeChatTests: XCTestCase {
     
     /// when launch `WeChat` app with `prepay_id` is failed, it should returns a failure result that contains a `wxPayError`
     func testLaunchWeChat() {
-        let request = URLRequest(url: URL(string: debug_url)!)
+        let request = URLRequest(url: URL(string: WXPay.default.debug_url)!)
         let expectation = self.expectation(description: "testLaunchWeChat")
         
         _ = WXPay.default.prePayRequest(with: request) { result in
@@ -104,7 +104,4 @@ class PayWayWeChatTests: XCTestCase {
     
     private let timeout: TimeInterval = 30
     private let callbackTimeout: TimeInterval = 30
-    private let debug_appId = "wxb4ba3c02aa476ea1"
-    private let debug_universalLink = "https://help.wechat.com/sdksample/"
-    private let debug_url = "https://wxpay.wxutil.com/pub_v2/app/app_pay.php?plat=ios"
 }

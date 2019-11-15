@@ -37,6 +37,7 @@
 		9735212F237BF543005BB7A6 /* WXPayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735212E237BF543005BB7A6 /* WXPayResponse.swift */; };
 		97352130237BF5B2005BB7A6 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735212C237BF4F6005BB7A6 /* Error.swift */; };
 		97352131237BF5B2005BB7A6 /* WXPayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735212E237BF543005BB7A6 /* WXPayResponse.swift */; };
+		97575084237E8B0C000CAA1C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 97575083237E8B0C000CAA1C /* README.md */; };
 		97E74DBA237AF41500D986B3 /* PayWayWeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9703597C237A5D77004D9365 /* PayWayWeChat.framework */; };
 		97E74DBB237AF41500D986B3 /* PayWayWeChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9703597C237A5D77004D9365 /* PayWayWeChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -78,7 +79,6 @@
 		9703599F237A61DB004D9365 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		970359A0237A61DB004D9365 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		970359A1237A61DB004D9365 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		970359A7237A6321004D9365 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		970359A8237A6569004D9365 /* WXPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPay.swift; sourceTree = "<group>"; };
 		97035A22237AAB8A004D9365 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		97035A24237AABA8004D9365 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +101,7 @@
 		97035A51237ABD93004D9365 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		9735212C237BF4F6005BB7A6 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		9735212E237BF543005BB7A6 /* WXPayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPayResponse.swift; sourceTree = "<group>"; };
+		97575083237E8B0C000CAA1C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		977AF99E237AF38000343BA1 /* example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = example.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +147,7 @@
 		97035972237A5D77004D9365 = {
 			isa = PBXGroup;
 			children = (
+				97575083237E8B0C000CAA1C /* README.md */,
 				97035996237A5DC5004D9365 /* Sources */,
 				9703597E237A5D77004D9365 /* PayWayWeChat */,
 				97035989237A5D77004D9365 /* PayWayWeChatTests */,
@@ -191,7 +193,6 @@
 				970359A8237A6569004D9365 /* WXPay.swift */,
 				9735212C237BF4F6005BB7A6 /* Error.swift */,
 				9735212E237BF543005BB7A6 /* WXPayResponse.swift */,
-				970359A7237A6321004D9365 /* README.md */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -381,6 +382,7 @@
 			files = (
 				97035A49237AAC42004D9365 /* LaunchScreen.storyboard in Resources */,
 				97035A46237AAC42004D9365 /* Assets.xcassets in Resources */,
+				97575084237E8B0C000CAA1C /* README.md in Resources */,
 				97035A44237AAC41004D9365 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

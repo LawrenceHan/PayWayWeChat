@@ -8,24 +8,24 @@
 
 import Foundation
 
-/// `WXPayError` represents an error that occurs while task for a wxpay request.
+/// `WXPayError` represents errors that occurs for the whole operation.
 public enum WXPayError: Error {
-    /// Error of `WXPay request`
+    /// Errors of `WeChatSDK`
     /// - Parameter code: -2 = user cancelled, -1 = common error, 0 = success,
-    /// 99 = launch WeChat app failed, 100 = wait for WeChat app callback timeout
+    /// 99 = launch WeChat app failed, 100 = wait for WeChat app callback timeout.
     case wxPayError(code: Int, message: String)
     
-    /// Error of `URLSession`.
+    /// Errors of `URLSession`. For example: timeout, task cancelled and etcs.
     case connectionError(Error)
 
-    /// Error while creating `Request.Response` from `(Data, URLResponse)`.
+    /// Errors while trying to parse `HTTPURLResponse`. For details check `ResponseError`.
     case responseError(Error)
 }
 
-/// `ResponseError` represents a common error that occurs while getting `Request.Response`
+/// `ResponseError` represents a common error that occurs while trying to parse `HTTPURLResponse`
 /// from raw result tuple `(Data?, URLResponse?, Error?)`.
 public enum ResponseError: Error {
-    /// Indicates the session adapter returned `URLResponse` that fails to down-cast to `HTTPURLResponse`.
+    /// Indicates the session returned `URLResponse` that fails to down-cast to `HTTPURLResponse`.
     case nonHTTPURLResponse(URLResponse?)
     
     /// Indicates `HTTPURLResponse.statusCode` is not acceptable.
